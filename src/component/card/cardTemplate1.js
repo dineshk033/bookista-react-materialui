@@ -34,7 +34,8 @@ const CardTemplate1 = ({ boxShadow = true, shadow = null }) => (
             component="img"
             sx={{ borderRadius: '12px' }}
             height="175"
-            image="https://1.bp.blogspot.com/-H0VVJFPjuY8/XwsfuKnIzAI/AAAAAAAACcQ/YfWPaY06tas6btdgiQrasQy52VnlEsLIQCLcBGAsYHQ/s499/51pX7aVZILL._SX322_BO1%252C204%252C203%252C200_.jpg"
+            image={faker.random.image()}
+            // image="https://1.bp.blogspot.com/-H0VVJFPjuY8/XwsfuKnIzAI/AAAAAAAACcQ/YfWPaY06tas6btdgiQrasQy52VnlEsLIQCLcBGAsYHQ/s499/51pX7aVZILL._SX322_BO1%252C204%252C203%252C200_.jpg"
             alt="green iguana"
         />
         <CardContent sx={{ padding: '16px !important' }}>

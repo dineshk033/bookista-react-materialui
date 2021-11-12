@@ -16,6 +16,7 @@
         "@tabler/icons": "^1.39.1",
         "faker": "^5.5.3",
         "formik": "^2.2.6",
+        "lodash": "^4.17.21",
         "material-ui-popup-state": "^1.8.0",
         "prop-types": "^15.7.2",
         "react": "^17.0.2",
