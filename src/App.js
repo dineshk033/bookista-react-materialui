@@ -3,9 +3,7 @@ import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, Stack, StyledEngineProvider } from '@mui/material';
 import themes from 'themes';
-import CardTemplate1 from 'component/card/cardTemplate1';
-import CardTemplate2 from 'component/card/cardTemplate2';
-import CardTemplate3 from 'component/card/cardTemplate3';
+import CardTemplate4 from 'component/card/cardBookListView';
 
 const App = () => (
     <StyledEngineProvider injectFirst>
@@ -13,9 +11,9 @@ const App = () => (
             <ThemeProvider theme={themes()}>
                 <CssBaseline />
                 <Stack direction="column" spacing={2}>
-                    <CardTemplate1 />
-                    <CardTemplate2 />
-                    <CardTemplate3 />
+                    {/* <CardTemplate1 />
+                    <CardTemplate2 /> */}
+                    <CardTemplate4 />
                 </Stack>
             </ThemeProvider>
         </div>
