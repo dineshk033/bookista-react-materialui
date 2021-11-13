@@ -3,6 +3,7 @@ import { createTheme } from '@mui/material/styles';
 // assets
 import colors from 'asset/scss/_themes-vars.module.scss';
 import themePalette from './palette';
+import themeTypography from './typography';
 
 export const theme = () => {
     const color = colors;
@@ -33,8 +34,8 @@ export const theme = () => {
                     minHeight: '48px'
                 }
             }
-        }
-        // typography: themeTypography(themeOption)
+        },
+        typography: themeTypography(themeOption)
     };
 
     const themes = createTheme(themeOptions);
