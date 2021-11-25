@@ -96,7 +96,7 @@ CustomSelect.propTypes = {
     open: PropTypes.bool,
     label: PropTypes.string,
     selected: PropTypes.array,
-    list: PropTypes.object
+    list: PropTypes.array
 };
 
 CustomSelect.defaultProps = {
