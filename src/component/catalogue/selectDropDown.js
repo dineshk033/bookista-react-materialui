@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
-import { Button, Collapse, Typography, List, Checkbox, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { Button, Collapse, List, Checkbox, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
