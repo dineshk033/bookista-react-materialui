@@ -6,7 +6,7 @@ import { FILTERSMOCK } from 'mock/data';
 
 export default (params) => (
     <Box px={2} pt={2} ml={5} sx={{ bgcolor: 'grey.100', borderRadius: '16px' }}>
-        <Typography variant="h3" component="h3">
+        <Typography variant="h4" component="h3" gutterBottom>
             Filters
         </Typography>
         {FILTERSMOCK.map((el) => (
