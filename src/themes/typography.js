@@ -27,9 +27,11 @@ export default function themeTypography(theme) {
             fontWeight: 700
         },
         h1: {
-            fontSize: '2.125rem',
-            color: theme.heading,
-            fontWeight: 700
+            fontSize: '3rem',
+            color: theme.paper,
+            letterSpacing: '1px',
+            fontFamily: 'Poppins, sans-serif',
+            fontWeight: 200
         },
         subtitle1: {
             fontSize: '0.875rem',
