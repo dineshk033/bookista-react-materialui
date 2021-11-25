@@ -1,94 +1,124 @@
+import { Button, Grid, Typography } from '@mui/material';
+import { Box } from '@mui/system';
+import Navbar from 'component/homepage/navbar';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import GroupsIcon from '@mui/icons-material/Groups';
 import React from 'react';
-import SearchIcon from '@mui/icons-material/Search';
-import IconButton from '@mui/material/IconButton';
-import Paper from '@mui/material/Paper';
-import Avatar from '@mui/material/Avatar';
-import Badge from '@mui/material/Badge';
-import { Typography, Box, Stack, Button } from '@mui/material';
-import InputBase from '@mui/material/InputBase';
 import './homepage.scss';
-import { styled } from '@mui/material/styles';
-import GridViewIcon from '@mui/icons-material/GridView';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import logo from 'asset/images/logo.png';
-import { image, internet, name } from 'faker';
+import FeatureCard from 'component/homepage/featureCard';
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
-    '& .MuiBadge-badge': {
-        border: `2px solid ${theme.palette.background.paper}`,
-        padding: '0 4px',
-        color: theme.palette.background.paper,
-        fontSize: '0.55rem'
+const FEATUREARR = [
+    {
+        icon: 'delivery',
+        label: 'Quick Delivery',
+        detail: 'Quia ducimus quibusdam numquam suscipit dolores eum saepe ullam occaecati. Recusandae qui quia tempora nam at quia sunt sequi blanditiis.'
+    },
+    {
+        icon: 'payment',
+        label: 'Secure Payment',
+        detail: 'Quia ducimus quibusdam numquam suscipit dolores eum saepe ullam occaecati. Recusandae qui quia tempora nam at quia sunt sequi blanditiis.'
+    },
+    {
+        icon: 'quality',
+        label: 'Best Quality',
+        detail: 'Quia ducimus quibusdam numquam suscipit dolores eum saepe ullam occaecati. Recusandae qui quia tempora nam at quia sunt sequi blanditiis.'
+    },
+    {
+        icon: 'guarantee',
+        label: 'Retuern Guarantee',
+        detail: 'Quia ducimus quibusdam numquam suscipit dolores eum saepe ullam occaecati. Recusandae qui quia tempora nam at quia sunt sequi blanditiis.'
     }
-}));
+];
 
 export default () => {
     console.log('hompage');
     return (
-        <div style={{ height: '65vh' }} className="svg">
-            <Box
-                borderRadius="8px"
-                bgcolor="background.paper"
-                p={1}
-                justifyContent="space-around"
-                alignItems="center"
-                display="flex"
-                flexDirection="row"
-            >
-                <img src={logo} alt="logo" />
-                <Stack sx={{ padding: 1 }} spacing={4} boxSizing="border-box" alignItems="center" width="75%" direction="row">
-                    <Paper
-                        component="form"
-                        sx={{
-                            p: '2px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            boxShadow: 'none',
-                            backgroundColor: 'grey.200',
-                            width: '100%'
-                        }}
-                        color="secondary"
-                    >
-                        <Button
-                            id="basic-button"
-                            aria-controls="basic-menu"
-                            aria-haspopup="true"
-                            // aria-expanded={open ? 'true' : undefined}
-                            // onClick={handleClick}
-                            startIcon={<GridViewIcon color="orange" />}
-                            endIcon={<KeyboardArrowDownIcon />}
-                        >
-                            Menu
-                        </Button>
-                        <InputBase
-                            sx={{ ml: 1, flex: 1, width: '60%' }}
-                            placeholder="Search books here"
-                            inputProps={{ 'aria-label': 'search Books' }}
-                        />
-                        <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
-                            <SearchIcon />
-                        </IconButton>
-                    </Paper>
-                    <StyledBadge color="secondary" badgeContent="20">
-                        <FavoriteBorderIcon />
-                    </StyledBadge>
-                    <StyledBadge color="secondary" badgeContent="4">
-                        <ShoppingCartOutlinedIcon />
-                    </StyledBadge>
-                    <Stack direction="row" spacing={{ xs: 1 }} alignItems="center">
-                        <Avatar alt="Cindy Baker" src={image.people()} variant="rounded" />
-                        <Box maxwidth="180px">
-                            <Typography variant="h6">{name.firstName()}</Typography>
-                            <Typography variant="caption" component="h6" noWrap>
-                                {internet.email()}
-                            </Typography>
+        <div>
+            <Grid container sx={{ height: '70vh' }} className="svg" spacing={{ xs: 2, md: 3 }}>
+                <Grid item xs={12}>
+                    <Navbar />
+                </Grid>
+                <Grid item xs={6}>
+                    <Box ml={4}>
+                        <Typography variant="h1" component="h1">
+                            Welcome to <b>Bookista</b>
+                        </Typography>
+                        <Typography variant="h1" component="h1" gutterBottom>
+                            Online Book Store
+                        </Typography>
+                        <Typography variant="caption" color="grey.300" component="h1" gutterBottom>
+                            Quia ducimus quibusdam numquam suscipit dolores eum saepe ullam occaecati. Recusandae qui quia tempora nam at
+                            quia sunt sequi blanditiis.
+                        </Typography>
+                        <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                            <div style={{ marginRight: '26px' }}>
+                                <Typography
+                                    mt={2}
+                                    variant="subtitle1"
+                                    sx={{ letterSpacing: '2px' }}
+                                    component="h6"
+                                    color="background.paper"
+                                    gutterBottom
+                                >
+                                    <LibraryBooksIcon sx={{ verticalAlign: 'middle' }} /> 59+k
+                                </Typography>
+                                <Typography variant="subtitle2" color="grey.300" component="h6" gutterBottom>
+                                    Book Collection
+                                </Typography>
+                            </div>
+                            <div>
+                                <Typography
+                                    mt={2}
+                                    variant="subtitle1"
+                                    sx={{ letterSpacing: '2px' }}
+                                    component="h6"
+                                    color="background.paper"
+                                    gutterBottom
+                                >
+                                    <GroupsIcon sx={{ verticalAlign: 'middle' }} /> 19,634
+                                </Typography>
+                                <Typography variant="subtitle2" color="grey.300" component="h6" gutterBottom>
+                                    Customers
+                                </Typography>
+                            </div>
                         </Box>
-                        <KeyboardArrowDownIcon />
-                    </Stack>
-                </Stack>
-            </Box>
+                        <Button sx={{ mt: 2 }} color="secondary" endIcon={<ArrowForwardIcon />} variant="contained">
+                            Go to Collections
+                        </Button>
+                    </Box>
+                </Grid>
+
+                <Grid item xs={6}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
+                        <img
+                            src="https://images-na.ssl-images-amazon.com/images/I/81Lb75rUhLL.jpg"
+                            style={{ marginRight: '20px' }}
+                            alt="Money Book"
+                            width="25%"
+                        />
+                        <img
+                            src="https://images-na.ssl-images-amazon.com/images/I/71tbalAHYCL.jpg"
+                            style={{ marginRight: '20px' }}
+                            alt="Money Book"
+                            width="23%"
+                        />
+                        <img
+                            src="http://georgerrmartin.com/gallery/coverart/GOThcEng.jpg"
+                            style={{ marginRight: '20px' }}
+                            alt="Money Book"
+                            width="20%"
+                        />
+                    </Box>
+                </Grid>
+            </Grid>
+            <Grid container>
+                {FEATUREARR.map((el) => (
+                    <Grid ke={el.icon} item xs={3}>
+                        <FeatureCard {...el} />
+                    </Grid>
+                ))}
+            </Grid>
         </div>
     );
 };
