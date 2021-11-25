@@ -36,6 +36,8 @@ const CustomSelect = ({ label, list, open, selected }) => {
         <>
             <Button
                 id="basic-button"
+                fullWidth
+                sx={{ justifyContent: 'start' }}
                 aria-controls="basic-menu"
                 aria-expanded={isOpen ? 'true' : undefined}
                 onClick={() => setIsOpen(!isOpen)}
