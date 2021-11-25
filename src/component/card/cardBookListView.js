@@ -25,7 +25,6 @@ export default () => (
             },
             borderRadius: '12px',
             minWidth: 250,
-            maxWidth: 620,
             boxShadow: 'none'
         }}
     >
@@ -40,7 +39,7 @@ export default () => (
                 Fiction
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
-                <Stack direction="row" alignItems="flex-start" spacing={1}>
+                <Stack direction="row" justifyContent="space-between" alignItems="flex-start" spacing={1}>
                     <Box>
                         <Typography gutterBottom component="div" variant="subtitle1">
                             {name.title()}

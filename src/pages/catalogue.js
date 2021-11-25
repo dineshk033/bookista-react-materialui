@@ -4,14 +4,15 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import CustomFilter from 'component/catalogue/customFilter';
 import GridViewIcon from '@mui/icons-material/GridView';
 import ViewListIcon from '@mui/icons-material/ViewList';
+import CardBookListView from 'component/card/cardBookListView';
 
 export default () => (
     <Grid container spacing={{ md: 5 }}>
         <Grid item xs={12} sm={12} md={3}>
             <CustomFilter />
         </Grid>
-        <Grid item xs={12} sm={12} md={9}>
-            <Box display="flex" flexDirection="row" alignItems="center" justifyContent="space-between">
+        <Grid sx={{ pr: 10 }} item xs={12} sm={12} md={9}>
+            <Box mb={2} display="flex" flexDirection="row" alignItems="center" justifyContent="space-between">
                 <Box>
                     <Typography variant="h4" gutterBottom>
                         Books
@@ -34,6 +35,7 @@ export default () => (
                     </ToggleButtonGroup>
                 </Box>
             </Box>
+            <CardBookListView />
         </Grid>
     </Grid>
 );
