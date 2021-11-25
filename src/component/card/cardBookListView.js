@@ -34,7 +34,7 @@ export default () => (
             image="https://1.bp.blogspot.com/-H0VVJFPjuY8/XwsfuKnIzAI/AAAAAAAACcQ/YfWPaY06tas6btdgiQrasQy52VnlEsLIQCLcBGAsYHQ/s499/51pX7aVZILL._SX322_BO1%252C204%252C203%252C200_.jpg"
             alt="Live from space album cover"
         />
-        <CardContent sx={{ flex: '1 1 0' }}>
+        <CardContent sx={{ flex: '1 1 0', m: 2, p: 0 }}>
             <Typography component="div" variant="h6" color="text.secondary">
                 Fiction
             </Typography>

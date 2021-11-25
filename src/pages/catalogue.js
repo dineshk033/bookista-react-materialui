@@ -25,7 +25,7 @@ export default () => (
                     <Button variant="outlined" size="small" endIcon={<KeyboardArrowDownIcon />} color="secondary">
                         Newest
                     </Button>
-                    <ToggleButtonGroup sx={{ ml: 1 }} size="small" value="Grid" color="secondary" exclusive>
+                    <ToggleButtonGroup sx={{ ml: 2 }} size="small" value="List" color="secondary" exclusive>
                         <ToggleButton value="Grid" aria-label="Grid">
                             <GridViewIcon sx={{ fontSize: '1.2rem' }} />
                         </ToggleButton>
