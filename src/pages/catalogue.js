@@ -5,6 +5,7 @@ import CustomFilter from 'component/catalogue/customFilter';
 import GridViewIcon from '@mui/icons-material/GridView';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import CardBookListView from 'component/card/cardBookListView';
+import { Booklist } from 'mock/data';
 
 export default () => (
     <Grid container spacing={{ md: 5 }}>
@@ -35,7 +36,9 @@ export default () => (
                     </ToggleButtonGroup>
                 </Box>
             </Box>
-            <CardBookListView />
+            {Booklist.map((el) => (
+                <CardBookListView {...el} key={el.title} />
+            ))}
         </Grid>
     </Grid>
 );
