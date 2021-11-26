@@ -1,4 +1,4 @@
-import { internet, lorem, name, random } from 'faker';
+import { company, internet, lorem, name, random } from 'faker';
 import _lodash from 'lodash';
 
 // eslint-disable-next-line import/prefer-default-export
@@ -162,14 +162,14 @@ export const Booklist = [
 
 export const BooklistData = (count) => {
     const mocking = {
-        categories: [lorem.word],
+        categories: [lorem.word()],
         imageUrl: random.image(),
         title: lorem.lines(),
         description: lorem.sentences(),
         price: _lodash.random(500, 700),
         offerPrice: _lodash.random(300, 500),
         writtenBy: name.findName(),
-        publisher: internet.domainName(),
+        publisher: company.companyName(),
         rating: _lodash.random(1, 5),
         reviews: _lodash.random(100, 300),
         year: _lodash.random(1999, 2020)
@@ -177,6 +177,18 @@ export const BooklistData = (count) => {
 
     const mocked = Array(count)
         .fill(1)
-        .map((_, idx) => ({ ...mocking, id: idx }));
+        .map((_) => ({
+            categories: [lorem.word()],
+            imageUrl: random.image(),
+            title: lorem.lines(),
+            description: lorem.sentences(),
+            price: _lodash.random(500, 700),
+            offerPrice: _lodash.random(300, 500),
+            writtenBy: name.findName(),
+            publisher: company.companyName(),
+            rating: _lodash.random(1, 5),
+            reviews: _lodash.random(100, 300),
+            year: _lodash.random(1999, 2020)
+        }));
     return [...Booklist, ...mocked];
 };

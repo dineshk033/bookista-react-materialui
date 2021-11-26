@@ -4,8 +4,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import CustomFilter from 'component/catalogue/customFilter';
 import GridViewIcon from '@mui/icons-material/GridView';
 import ViewListIcon from '@mui/icons-material/ViewList';
-import CardBookListView from 'component/card/cardBookListView';
-import { Booklist } from 'mock/data';
+import BookGrid from 'component/catalogue/bookGrid';
 
 export default () => (
     <Grid container spacing={{ md: 5 }}>
@@ -36,9 +35,7 @@ export default () => (
                     </ToggleButtonGroup>
                 </Box>
             </Box>
-            {Booklist.map((el) => (
-                <CardBookListView {...el} key={el.title} />
-            ))}
+            <BookGrid />
         </Grid>
     </Grid>
 );
