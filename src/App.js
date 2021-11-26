@@ -9,6 +9,7 @@ import Catalogue from 'pages/catalogue';
 import NavigationRoutes from 'routes';
 import { BrowserRouter } from 'react-router-dom';
 
+
 const App = () => (
     <StyledEngineProvider injectFirst>
         {/* <div style={{ margin: '2rem', backgroundColor: 'aliceblue', padding: '1rem' }}> */}
