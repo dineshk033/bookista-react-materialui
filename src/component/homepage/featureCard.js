@@ -19,7 +19,6 @@ const FeatureCard = ({ icon, label, detail }) => {
                 return <VerifiedUserIcon />;
         }
     }
-    console.log('asd');
     return (
         <Box m={5}>
             {switchIcon(icon)}

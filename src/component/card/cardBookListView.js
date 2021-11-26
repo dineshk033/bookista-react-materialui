@@ -4,6 +4,7 @@ import { lorem, name } from 'faker';
 import _lodash from 'lodash';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import PropTypes from 'prop-types';
 
 const LabelCaption = ({ label, name }) => (
     <Box>
@@ -16,7 +17,7 @@ const LabelCaption = ({ label, name }) => (
     </Box>
 );
 
-export default () => (
+const CardDetailView = ({ categories, imageUrl, title, description, price, offerPrice, writtenBy, publisher, rating, reviews, year }) => (
     <Card
         sx={{
             display: 'flex',
@@ -25,25 +26,25 @@ export default () => (
             },
             borderRadius: '12px',
             minWidth: 250,
-            maxWidth: 620,
-            boxShadow: 'none'
+            boxShadow: 'none',
+            mb: 3
         }}
     >
         <CardMedia
             component="img"
             sx={{ width: 120, height: 190, borderRadius: '4px', objectFit: 'fill', margin: 1 }}
-            image="https://1.bp.blogspot.com/-H0VVJFPjuY8/XwsfuKnIzAI/AAAAAAAACcQ/YfWPaY06tas6btdgiQrasQy52VnlEsLIQCLcBGAsYHQ/s499/51pX7aVZILL._SX322_BO1%252C204%252C203%252C200_.jpg"
-            alt="Live from space album cover"
+            image={imageUrl}
+            alt={title}
         />
-        <CardContent sx={{ flex: '1 1 0' }}>
+        <CardContent sx={{ flex: '1 1 0', m: 2, p: 0 }}>
             <Typography component="div" variant="h6" color="text.secondary">
-                Fiction
+                {categories.filter((_, idx) => idx < 3).join(', ')}
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
-                <Stack direction="row" alignItems="flex-start" spacing={1}>
+                <Stack direction="row" justifyContent="space-between" alignItems="flex-start" spacing={1}>
                     <Box>
                         <Typography gutterBottom component="div" variant="subtitle1">
-                            {name.title()}
+                            {title}
                         </Typography>
                         <Typography
                             gutterBottom
@@ -57,29 +58,29 @@ export default () => (
                             }}
                             component="div"
                         >
-                            {lorem.sentences()}
+                            {description}
                         </Typography>
                     </Box>
                     <Box sx={{ textAlign: 'center' }}>
-                        <Rating name="read-only" value={_lodash.random(1, 5)} readOnly size="small" />
+                        <Rating name="read-only" value={rating} readOnly size="small" />
                         <Typography variant="caption" component="div">
-                            ({_lodash.random(200, 999)} reviews)
+                            ({reviews} reviews)
                         </Typography>
                     </Box>
                 </Stack>
                 <Stack direction="row" alignItems="baseline" spacing={1}>
                     <Typography gutterBottom variant="h4" component="div">
-                        $499
+                        ${price}
                     </Typography>
                     <Typography gutterBottom variant="offerPrice" component="div">
-                        $649
+                        ${offerPrice}
                     </Typography>
                 </Stack>
                 <Stack direction="row" justifyContent="space-between">
                     <Stack direction="row" spacing={3}>
-                        <LabelCaption label="Written by" name={name.findName()} />
-                        <LabelCaption label="Publisher" name={name.jobType()} />
-                        <LabelCaption label="Year" name={_lodash.random(1986, 2020)} />
+                        <LabelCaption label="Written by" name={writtenBy} />
+                        <LabelCaption label="Publisher" name={publisher} />
+                        <LabelCaption label="Year" name={year} />
                     </Stack>
                     <Box>
                         <Button variant="contained" color="primary" startIcon={<AddShoppingCartIcon />}>
@@ -107,3 +108,19 @@ export default () => (
         </CardContent>
     </Card>
 );
+
+CardDetailView.propTypes = {
+    categories: PropTypes.array,
+    imageUrl: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.number,
+    offerPrice: PropTypes.number,
+    writtenBy: PropTypes.string,
+    publisher: PropTypes.string,
+    rating: PropTypes.number,
+    reviews: PropTypes.number,
+    year: PropTypes.number
+};
+
+export default CardDetailView;
