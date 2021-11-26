@@ -7,7 +7,7 @@ import ViewListIcon from '@mui/icons-material/ViewList';
 import BookGrid from 'component/catalogue/bookGrid';
 
 export default () => (
-    <Grid container spacing={{ md: 5 }}>
+    <Grid sx={{ pt: 3 }} container spacing={{ md: 5 }}>
         <Grid item xs={12} sm={12} md={3}>
             <CustomFilter />
         </Grid>

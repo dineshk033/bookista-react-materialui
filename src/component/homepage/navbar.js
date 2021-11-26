@@ -13,6 +13,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import logo from 'asset/images/logo.png';
 import { image, internet, name } from 'faker';
+import { Link } from 'react-router-dom';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -33,7 +34,9 @@ export default () => (
         display="flex"
         flexDirection="row"
     >
-        <img src={logo} alt="logo" />
+        <Link to="/Books">
+            <img src={logo} alt="logo" />
+        </Link>
         <Stack sx={{ padding: 1 }} spacing={4} boxSizing="border-box" alignItems="center" width="75%" direction="row">
             <Paper
                 component="form"
