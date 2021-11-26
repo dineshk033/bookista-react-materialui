@@ -7,11 +7,11 @@ import { useRoutes } from 'react-router-dom';
 export default function NavigationRoutes() {
     return useRoutes([
         {
-            path: '/',
+            path: '/home',
             element: <DashboardComponent />,
             children: [
                 { path: '/', element: <Homepage /> },
-                { path: '/Books', element: <Catalogue /> }
+                { path: '/books', element: <Catalogue /> }
             ]
         },
         {

@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 
 const DashboardComponent = () => (
     <>
-        <Box p={3} bgcolor="primary.main">
+        <Box p={2} bgcolor="primary.main">
             <Navbar />
         </Box>
         <Outlet />
