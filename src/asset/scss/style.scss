@@ -4,6 +4,14 @@
 // third-party
 @import '~react-perfect-scrollbar/dist/css/styles.css';
 
+.two-lines-truncate {
+    display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 // ==============================|| LIGHT BOX ||============================== //
 .fullscreen .react-images__blanket {
     z-index: 1200;

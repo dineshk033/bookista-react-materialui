@@ -1,22 +1,29 @@
 /* eslint-disable import/no-cycle */
+import PageNotFound from 'component/404';
+import Carousel from 'component/card/cardTemplate4';
 import Catalogue from 'pages/catalogue';
 import DashboardComponent from 'pages/dashboard';
 import Homepage from 'pages/homepage';
+
 import { useRoutes } from 'react-router-dom';
 
 export default function NavigationRoutes() {
     return useRoutes([
         {
-            path: '/',
+            path: '/home',
             element: <DashboardComponent />,
             children: [
                 { path: '/', element: <Homepage /> },
-                { path: '/Books', element: <Catalogue /> }
+                { path: '/books', element: <Catalogue /> }
             ]
         },
         {
             path: '/list',
             element: <Catalogue />
+        },
+        {
+            path: '*',
+            element: <PageNotFound />
         }
     ]);
 }

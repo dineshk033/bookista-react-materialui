@@ -7,8 +7,10 @@ import themes from 'themes';
 import Catalogue from 'pages/catalogue';
 // eslint-disable-next-line import/no-cycle
 import NavigationRoutes from 'routes';
+import Footer from './component/Footer';
 import { BrowserRouter } from 'react-router-dom';
-
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const App = () => (
     <StyledEngineProvider injectFirst>
@@ -18,6 +20,7 @@ const App = () => (
             <BrowserRouter>
                 <NavigationRoutes />
             </BrowserRouter>
+            <Footer />
         </ThemeProvider>
         {/* </div> */}
     </StyledEngineProvider>

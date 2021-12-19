@@ -13,8 +13,7 @@ export default () => (
                 boxShadow: '0 2px 14px 0 rgb(32 40 45 / 8%)'
             },
             borderRadius: '12px',
-            minWidth: 250,
-            maxWidth: 300,
+            mx: 1.5,
             boxShadow: 'none'
         }}
     >
@@ -22,8 +21,8 @@ export default () => (
             component="img"
             sx={{ borderRadius: '12px' }}
             height="150"
-            // image={random.image()}
-            image="https://1.bp.blogspot.com/-H0VVJFPjuY8/XwsfuKnIzAI/AAAAAAAACcQ/YfWPaY06tas6btdgiQrasQy52VnlEsLIQCLcBGAsYHQ/s499/51pX7aVZILL._SX322_BO1%252C204%252C203%252C200_.jpg"
+            image={random.image()}
+            // image="https://1.bp.blogspot.com/-H0VVJFPjuY8/XwsfuKnIzAI/AAAAAAAACcQ/YfWPaY06tas6btdgiQrasQy52VnlEsLIQCLcBGAsYHQ/s499/51pX7aVZILL._SX322_BO1%252C204%252C203%252C200_.jpg"
             alt="green iguana"
         />
         <CardContent sx={{ padding: '16px !important' }}>
