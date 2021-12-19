@@ -1,12 +1,19 @@
-import { Button, Grid, Typography } from '@mui/material';
+import { Button, Stack, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import Navbar from 'component/homepage/navbar';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import GroupsIcon from '@mui/icons-material/Groups';
 import React from 'react';
+import CardTemplate from '../component/card/cardTemplate4';
+import CardTemplate1 from '../component/card/cardTemplate5';
+import CardTemplate2 from '../component/card/cardTemplate1';
 import './homepage.scss';
 import FeatureCard from 'component/homepage/featureCard';
+import { Booklist } from 'mock/data';
+import Carousel from 'component/carousel';
+import FlashSales from 'component/FlashSales';
+import CardTemplate3 from '../component/card/cardTemplate2';
+import OverlayCarousel from 'component/carousel/overlayCarousel';
 
 const FEATUREARR = [
     {
@@ -127,6 +134,89 @@ export default () => (
                     <FeatureCard {...el} />
                 </Grid>
             ))}
+        </Grid>
+
+        <Grid container justifyContent="center">
+            <Grid item xs={11}>
+                <Box sx={{ textAlign: 'center', mb: 3 }}>
+                    <Typography variant="h2" fontWeight={600} component="h1" gutterBottom>
+                        Trending this week
+                    </Typography>
+                    <Typography variant="subtitle2" component="h5">
+                        Ex rem perferendis voluptatem odio et. Nulla inventore autem qui quia. Sit iusto quia quia expedita libero aut.
+                    </Typography>
+                    <Typography variant="subtitle2" component="h5">
+                        Ut reiciendis dolorem enim ullam qui. Quia reprehenderit et ad voluptatem ut quisquam magni.
+                    </Typography>
+                </Box>
+                <OverlayCarousel />
+            </Grid>
+            <Grid item xs={11}>
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <Typography variant="h2" component="h1">
+                            Recommended For You
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <CardTemplate {...Booklist[4]} />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <CardTemplate1 {...Booklist[1]} />
+                        <br />
+                        <CardTemplate1 {...Booklist[6]} />
+                        <Button sx={{ mt: 2, ml: -8 }} color="secondary" endIcon={<ArrowForwardIcon />} variant="contained">
+                            View All
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid sx={{ bgcolor: 'secondary.200' }} item xs={12} mt={5} pt={3}>
+                <Box sx={{ textAlign: 'center' }}>
+                    <Typography variant="h2" component="h1" gutterBottom>
+                        Special Offers
+                    </Typography>
+                    <Typography variant="subtitle2" component="h5">
+                        Ex rem perferendis voluptatem odio et. Nulla inventore autem qui quia. Sit iusto quia quia expedita libero aut.
+                        Maiores earum voluptatibus sint sit sit asperiores laboriosam doloribus.
+                    </Typography>
+                    <Typography variant="subtitle2" component="h5">
+                        Ut reiciendis dolorem enim ullam qui. Quia reprehenderit et ad voluptatem ut quisquam magni. Sit exercitationem
+                        neque vel ad nisi officia laborum
+                    </Typography>
+                </Box>
+                <Box mx={10} my={4}>
+                    <Carousel />
+                </Box>
+            </Grid>
+            <Grid item xs={12} spacing={1}>
+                <FlashSales />
+            </Grid>
+            <Grid item xs={12} mx={10} py={3}>
+                <Box sx={{ textAlign: 'center' }}>
+                    <Typography variant="h2" component="h1" gutterBottom>
+                        Latest News
+                    </Typography>
+                    <Typography variant="subtitle2" component="h5">
+                        Ex rem perferendis voluptatem odio et. Nulla inventore autem qui quia. Sit iusto quia quia expedita libero aut.
+                        Maiores earum voluptatibus sint sit sit asperiores laboriosam doloribus.
+                    </Typography>
+                    <Typography variant="subtitle2" component="h5">
+                        Ut reiciendis dolorem enim ullam qui. Quia reprehenderit et ad voluptatem ut quisquam magni. Sit exercitationem
+                        neque vel ad nisi officia laborum
+                    </Typography>
+                </Box>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 3, overflow: 'hidden' }}>
+                    {[0, 1, 2, 3].map((el) => (
+                        <CardTemplate3 key={el} />
+                    ))}
+                </Box>
+                <Box sx={{ textAlign: 'center' }}>
+                    <Button sx={{ mt: 2, ml: -8 }} color="secondary" endIcon={<ArrowForwardIcon />} variant="contained">
+                        View More
+                    </Button>
+                </Box>
+            </Grid>
         </Grid>
     </div>
 );

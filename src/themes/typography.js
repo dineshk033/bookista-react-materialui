@@ -24,7 +24,9 @@ export default function themeTypography(theme) {
         h2: {
             fontSize: '1.5rem',
             color: theme.heading,
-            fontWeight: 700
+            letterSpacing: '0.05em',
+            fontFamily: 'Poppins, sans-serif',
+            fontWeight: 500
         },
         h1: {
             fontSize: '3rem',

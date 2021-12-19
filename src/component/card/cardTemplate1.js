@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, CardContent, CardMedia, Chip, Stack, Typography, Button } from '@mui/material';
 import { styled } from '@mui/styles';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import faker from 'faker';
+
 // import thinkGrowRich from 'asset/images/thinkGrowRich.jpeg';
 
 const CustomChip = styled(Chip)({
@@ -16,7 +16,7 @@ const CustomChip = styled(Chip)({
     }
 });
 
-const CardTemplate1 = ({ boxShadow = true, shadow = null }) => (
+const CardTemplate1 = ({ boxShadow = true, shadow = null, categories, title, imageUrl, writtenBy, description, price, offerPrice }) => (
     <Card
         sx={{
             // border: border ? '1px solid' : 'none',
@@ -25,26 +25,39 @@ const CardTemplate1 = ({ boxShadow = true, shadow = null }) => (
                 boxShadow: boxShadow ? shadow || '0 2px 14px 0 rgb(32 40 45 / 8%)' : 'inherit'
             },
             borderRadius: '12px',
-            minWidth: 250,
-            maxWidth: 300,
+
             boxShadow: 'none'
         }}
     >
         <CardMedia
             component="img"
             sx={{ borderRadius: '12px' }}
-            height="175"
-            image={faker.random.image()}
+            width="320"
+            height="200"
+            image={imageUrl}
             // image="https://1.bp.blogspot.com/-H0VVJFPjuY8/XwsfuKnIzAI/AAAAAAAACcQ/YfWPaY06tas6btdgiQrasQy52VnlEsLIQCLcBGAsYHQ/s499/51pX7aVZILL._SX322_BO1%252C204%252C203%252C200_.jpg"
-            alt="green iguana"
+            alt={title}
         />
         <CardContent sx={{ padding: '16px !important' }}>
-            <Typography gutterBottom variant="h5" component="div">
-                {faker.name.title()}
+            <Typography
+                gutterBottom
+                variant="h5"
+                sx={{
+                    display: '-webkit-box',
+                    WebkitBoxOrient: 'vertical',
+                    WebkitLineClamp: 2,
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    height: '40px'
+                }}
+                component="div"
+            >
+                {title}
             </Typography>
             <Stack direction="row" mb={1} spacing={1}>
-                <CustomChip label="Fiction" />
-                <CustomChip label="BIOGRAPHY" />
+                {categories.map((el) => (
+                    <CustomChip label={el} key={el} />
+                ))}
             </Stack>
             <Typography
                 variant="body2"
@@ -53,15 +66,16 @@ const CardTemplate1 = ({ boxShadow = true, shadow = null }) => (
                     WebkitBoxOrient: 'vertical',
                     WebkitLineClamp: 3,
                     overflow: 'hidden',
-                    textOverflow: 'ellipsis'
+                    textOverflow: 'ellipsis',
+                    height: '65px'
                 }}
                 paragraph
                 color="text.secondary"
             >
-                {faker.lorem.sentences()}
+                {description}
             </Typography>
             <Typography gutterBottom variant="h6" mb={1} component="div">
-                {faker.name.findName()}
+                {writtenBy}
             </Typography>
             <Stack direction="row" flexWrap="wrap" alignItems="center" justifyContent="space-between" spacing={1}>
                 <Button variant="contained" sx={{ marginBottom: 1 }} color="warning" startIcon={<AddShoppingCartIcon />}>
@@ -69,10 +83,10 @@ const CardTemplate1 = ({ boxShadow = true, shadow = null }) => (
                 </Button>
                 <Stack direction="row" alignItems="baseline" spacing={1}>
                     <Typography gutterBottom variant="h4" component="div">
-                        $499
+                        ${offerPrice}
                     </Typography>
                     <Typography gutterBottom variant="offerPrice" component="div">
-                        $649
+                        ${price}
                     </Typography>
                 </Stack>
             </Stack>
@@ -81,6 +95,13 @@ const CardTemplate1 = ({ boxShadow = true, shadow = null }) => (
 );
 CardTemplate1.propTypes = {
     boxShadow: PropTypes.bool,
-    shadow: PropTypes.bool
+    shadow: PropTypes.bool,
+    title: PropTypes.string,
+    imageUrl: PropTypes.string,
+    writtenBy: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.number,
+    offerPrice: PropTypes.number,
+    categories: PropTypes.array
 };
 export default CardTemplate1;

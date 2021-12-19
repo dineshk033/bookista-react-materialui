@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, CardContent, CardMedia, LinearProgress, Rating, Stack, Typography, Box, IconButton } from '@mui/material';
 import _lodash from 'lodash';
 import { name } from 'faker';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
-export default () => (
+const CardTemplate3 = ({ title, imageUrl, writtenBy, description, price, offerPrice }) => (
     <Card
         sx={{
             display: 'flex',
@@ -13,6 +14,7 @@ export default () => (
             },
             borderRadius: '12px',
             minWidth: 250,
+            mx: 1,
             // maxWidth: 320,
             boxShadow: 'none'
         }}
@@ -20,8 +22,8 @@ export default () => (
         <CardMedia
             component="img"
             sx={{ width: 120, height: 150, borderRadius: '4px', objectFit: 'fill', margin: 1 }}
-            image="https://1.bp.blogspot.com/-H0VVJFPjuY8/XwsfuKnIzAI/AAAAAAAACcQ/YfWPaY06tas6btdgiQrasQy52VnlEsLIQCLcBGAsYHQ/s499/51pX7aVZILL._SX322_BO1%252C204%252C203%252C200_.jpg"
-            alt="Live from space album cover"
+            image={imageUrl}
+            alt={title}
         />
         <CardContent sx={{ flex: '1 1 0', padding: '0.7em !important' }}>
             <Stack direction="row" alignItems="center" spacing={1}>
@@ -33,19 +35,18 @@ export default () => (
                     ({_lodash.random(200, 999)})
                 </Typography>
             </Stack>
-            <Typography my={1} component="div" variant="h5">
-                {/* Sapeins: A Brief history of humankind */}
-                {name.title()}
+            <Typography mt={1} gutterBottom sx={{ width: '85%' }} component="div" noWrap variant="h5">
+                {title}
             </Typography>
-            <Typography gutterBottom variant="subtitle2" component="div">
-                {name.findName()}
+            <Typography mb={2} gutterBottom variant="subtitle2" component="div">
+                {writtenBy}
             </Typography>
             <Stack direction="row" alignItems="baseline" mt={1} spacing={1}>
                 <Typography gutterBottom variant="h4" component="div">
-                    ${_lodash.random(400, 700)}
+                    ${offerPrice}
                 </Typography>
                 <Typography gutterBottom variant="offerPrice" component="div">
-                    ${_lodash.random(700, 999)}
+                    ${price}
                 </Typography>
             </Stack>
             <Stack direction="row" alignItems="center" spacing={2}>
@@ -56,7 +57,7 @@ export default () => (
                     </Typography>
                 </Box>
                 <IconButton
-                    sx={{ backgroundColor: '#D9176C', color: '#fafafafa', marginTop: '-12px !important' }}
+                    sx={{ backgroundColor: 'secondary.main', color: '#fafafafa', marginTop: '-12px !important' }}
                     size="medium"
                     aria-label="upload picture"
                 >
@@ -66,3 +67,14 @@ export default () => (
         </CardContent>
     </Card>
 );
+
+CardTemplate3.propTypes = {
+    title: PropTypes.string,
+    imageUrl: PropTypes.string,
+    writtenBy: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.number,
+    offerPrice: PropTypes.number
+};
+
+export default CardTemplate3;
