@@ -4,7 +4,7 @@ import Carousel from 'component/card/cardTemplate4';
 import Catalogue from 'pages/catalogue';
 import DashboardComponent from 'pages/dashboard';
 import Homepage from 'pages/homepage';
-
+import Detail from '../pages/detail';
 import { useRoutes } from 'react-router-dom';
 
 export default function NavigationRoutes() {
@@ -14,7 +14,8 @@ export default function NavigationRoutes() {
             element: <DashboardComponent />,
             children: [
                 { path: '/', element: <Homepage /> },
-                { path: '/books', element: <Catalogue /> }
+                { path: '/books', element: <Catalogue /> },
+                { path: '/detail', element: <Detail /> }
             ]
         },
         {
