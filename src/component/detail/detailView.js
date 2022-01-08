@@ -16,7 +16,10 @@ import {
     TableHead,
     TableRow,
     Paper,
-    Avatar
+    Avatar,
+    Grid,
+    Tabs,
+    Tab
 } from '@mui/material';
 import faker from 'faker';
 import CommentIcon from '@mui/icons-material/Comment';
@@ -34,7 +37,7 @@ import BookGrid from 'component/catalogue/bookGrid';
 
 const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
     const [bookDetails, setBookDetails] = useState([]);
-
+    const [tabValue, setTabValue] = useState('');
     const detailsData = {
         Categories: ['UX', 'Design'],
         Title: "Don't Make Me Think, Revisited",
@@ -49,31 +52,46 @@ const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
     }, []);
 
     const DetailsTable = () => (
-        <TableContainer component={Paper}>
-            <Table aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Product Details</TableCell>
-                        <TableCell align="right">Customer Reviews</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {Object.keys(bookDetails).map((row) => (
-                        <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                            <TableCell component="th" scope="row">
-                                <b>{row}</b>
-                            </TableCell>
-                            <TableCell align="right">{bookDetails[row]}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <>
+            <Box sx={{ width: '100%' }}>
+                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                    <Tabs value={tabValue} onChange={(e) => setTabValue(e)}>
+                        <Tab label="Product Details" />
+                        <Tab label="Customer Reviews" />
+                    </Tabs>
+                </Box>
+            </Box>
+            <TableContainer component={Paper}>
+                <Table aria-label="simple table">
+                    <TableBody>
+                        {Object.keys(bookDetails).map((row) => (
+                            <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                <TableCell component="th" scope="row">
+                                    <b>{row}</b>
+                                </TableCell>
+                                <TableCell align="right">{bookDetails[row]}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </>
+    );
+
+    const LabelCaption = ({ label, name }) => (
+        <Box>
+            <Typography component="div" variant="caption">
+                {label}
+            </Typography>
+            <Typography component="div" variant="h6">
+                {name}
+            </Typography>
+        </Box>
     );
 
     return (
         <Box m={5} p={10}>
-            <Stack direction="row" spacing={2} sx={{ height: 300 }}>
+            <Stack direction="row" spacing={2} mb={10}>
                 <Card
                     sx={{
                         ':hover': {
@@ -111,9 +129,16 @@ const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
                                 {faker.name.title()}
                             </Typography>
                             <Stack direction="row" spacing={2} m={2}>
-                                <Rating name="read-only" value={2} readOnly sx={{ flexGrow: 1 }} />
-                                <CommentIcon /> 235 Reviews
-                                <ThumbUpAltIcon /> 456 Likes
+                                <Box sx={{ flexGrow: 1 }}>
+                                    <Rating name="read-only" value={2} readOnly />
+                                    <Typography variant="h6" component="span" m={2}>
+                                        {' '}
+                                        2.0
+                                    </Typography>
+                                </Box>
+                                <CommentIcon /> <Typography>235 Reviews </Typography>
+                                <ThumbUpAltIcon />
+                                <Typography> 456 Likes</Typography>
                                 <FacebookIcon />
                                 <TwitterIcon />
                                 <WhatsAppIcon />
@@ -121,22 +146,18 @@ const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
                             </Stack>
                             <Stack direction="row" spacing={2} m={2}>
                                 <Box sx={{ flexGrow: 1 }}>
-                                    <Avatar alt="Author" src={faker.random.image()} variant="square" />
-                                    <span>
-                                        Written by : <b> Steve Krug </b>
-                                    </span>
-                                    <span>
-                                        Pubisher : <b>New Riders </b>
-                                    </span>
-                                    <span>
-                                        Year <b>2014</b>
-                                    </span>
+                                    <Stack display="flex" direction="row" spacing={6} m={2}>
+                                        <Avatar alt="Author" src={faker.random.image()} variant="square" />
+                                        <LabelCaption label="Written by" name="Ameer" />
+                                        <LabelCaption label="Publisher" name="Books Publications" />
+                                        <LabelCaption label="Year" name="2001" />
+                                    </Stack>
                                 </Box>
-                                <Stack direction="row" spacing={2} m={2}>
+                                <Stack direction="row" spacing={2} m={2} p={2}>
                                     <Button variant="outlined" startIcon={<BoltIcon />}>
                                         Free shipping
                                     </Button>
-                                    <Button variant="outlined" startIcon={<DoneIcon />}>
+                                    <Button variant="outlined" color="error" startIcon={<DoneIcon />}>
                                         In stock
                                     </Button>
                                 </Stack>
@@ -170,15 +191,22 @@ const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
                                 {faker.lorem.sentences()}
                             </Typography>
                             <Stack direction="row" spacing={2} m={2}>
-                                <Box display="flex" flexGrow="1" justifyContent="space-around">
-                                    <Typography variant="h2" component="div">
-                                        $ 800{' '}
-                                    </Typography>
-                                    <span style={{ textDecoration: 'line-through' }}>$ 899 </span>
+                                <Box flexGrow="1">
+                                    <Stack direction="row" spacing={2}>
+                                        <Typography variant="h2" component="div">
+                                            $ 800{' '}
+                                        </Typography>
+                                        <Typography component="div" sx={{ textDecoration: 'line-through' }}>
+                                            $ 899{' '}
+                                        </Typography>
+                                        <Button variant="contained" color="error">
+                                            20%
+                                        </Button>
+                                    </Stack>
                                 </Box>
                                 <Stack direction="row" spacing={2}>
                                     <Button variant="outlined">1</Button>
-                                    <Button variant="contained" color="primary" startIcon={<ShoppingCartIcon />}>
+                                    <Button variant="contained" color="error" startIcon={<ShoppingCartIcon />}>
                                         Add to cart
                                     </Button>
                                     <Button variant="outlined" startIcon={<FavoriteBorderIcon />}>
@@ -190,17 +218,17 @@ const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
                     </Card>
                 </Box>
             </Stack>
-            <Stack direction="row" mt={4} spacing={2}>
-                <Box width={1000}>
+            <Grid container spacing={2}>
+                <Grid item xs={8}>
                     <DetailsTable />
-                </Box>
-                <Box flexDirection="column">
+                </Grid>
+                <Grid item xs={4}>
                     <Typography variant="h2" component="div" m={2}>
                         Related Books
                     </Typography>
                     <BookGrid />
-                </Box>
-            </Stack>
+                </Grid>
+            </Grid>
         </Box>
     );
 };
