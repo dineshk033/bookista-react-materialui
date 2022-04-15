@@ -16,7 +16,8 @@ import {
     TableHead,
     TableRow,
     Paper,
-    Avatar
+    Avatar,
+    Grid
 } from '@mui/material';
 import faker from 'faker';
 import CommentIcon from '@mui/icons-material/Comment';
@@ -31,6 +32,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { BooklistData } from 'mock/data';
 import BookGrid from 'component/catalogue/bookGrid';
+import DetailRelatedBooks from './detailRelatedBooks';
 
 const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
     const [bookDetails, setBookDetails] = useState([]);
@@ -53,13 +55,13 @@ const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
             <Table aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Product Details</TableCell>
+                        <TableCell sx={{ borderBottom: '3px solid orange' }}>Product Details</TableCell>
                         <TableCell align="right">Customer Reviews</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {Object.keys(bookDetails).map((row) => (
-                        <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                    {Object.keys(bookDetails).map((row , i) => (
+                        <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} key={i}>
                             <TableCell component="th" scope="row">
                                 <b>{row}</b>
                             </TableCell>
@@ -132,11 +134,11 @@ const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
                                         Year <b>2014</b>
                                     </span>
                                 </Box>
-                                <Stack direction="row" spacing={2} m={2}>
+                                <Stack direction="row" spacing={2} m={2} height='2rem'>
                                     <Button variant="outlined" startIcon={<BoltIcon />}>
                                         Free shipping
                                     </Button>
-                                    <Button variant="outlined" startIcon={<DoneIcon />}>
+                                    <Button variant="outlined" color='error' startIcon={<DoneIcon />}>
                                         In stock
                                     </Button>
                                 </Stack>
@@ -178,10 +180,10 @@ const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
                                 </Box>
                                 <Stack direction="row" spacing={2}>
                                     <Button variant="outlined">1</Button>
-                                    <Button variant="contained" color="primary" startIcon={<ShoppingCartIcon />}>
+                                    <Button variant="contained" color="error" startIcon={<ShoppingCartIcon />}>
                                         Add to cart
                                     </Button>
-                                    <Button variant="outlined" startIcon={<FavoriteBorderIcon />}>
+                                    <Button variant="outlined" color="error" startIcon={<FavoriteBorderIcon />}>
                                         {' '}
                                     </Button>
                                 </Stack>
@@ -190,17 +192,14 @@ const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
                     </Card>
                 </Box>
             </Stack>
-            <Stack direction="row" mt={4} spacing={2}>
-                <Box width={1000}>
+            <Grid container mt={4} spacing={1}>
+                <Grid item xs={8}>
                     <DetailsTable />
-                </Box>
-                <Box flexDirection="column">
-                    <Typography variant="h2" component="div" m={2}>
-                        Related Books
-                    </Typography>
-                    <BookGrid />
-                </Box>
-            </Stack>
+                </Grid>
+                <Grid item xs={4}>
+                    <DetailRelatedBooks />
+                </Grid>
+            </Grid>
         </Box>
     );
 };

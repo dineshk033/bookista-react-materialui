@@ -83,7 +83,7 @@ const Footer = () => (
                 ))}
             </Grid>
             <Grid item xs={12} md={3} lg={2}>
-                <Typography variant="h6" gutterBotttom>
+                <Typography variant="h6" gutterBottom>
                     Quick Links
                 </Typography>
                 <List dense>
@@ -95,7 +95,7 @@ const Footer = () => (
                 </List>
             </Grid>
             <Grid item xs={12} md={3} lg={2}>
-                <Typography variant="h6" gutterBotttom>
+                <Typography variant="h6" gutterBottom>
                     Customer Area
                 </Typography>
                 <List dense>
@@ -107,7 +107,7 @@ const Footer = () => (
                 </List>
             </Grid>
             <Grid item xs={12} md={3} lg={3}>
-                <Typography variant="h6" gutterBotttom>
+                <Typography variant="h6" gutterBottom>
                     Customer Area
                 </Typography>
                 <List>
