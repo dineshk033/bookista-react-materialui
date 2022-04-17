@@ -30,25 +30,36 @@ import BoltIcon from '@mui/icons-material/Bolt';
 import DoneIcon from '@mui/icons-material/Done';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { BooklistData } from 'mock/data';
+import { BooklistData , Booklist} from 'mock/data';
 import BookGrid from 'component/catalogue/bookGrid';
 import DetailRelatedBooks from './detailRelatedBooks';
+import CardTemplate from '../card/cardTemplate4';
+import CardTemplate1 from '../card/cardTemplate5';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
     const [bookDetails, setBookDetails] = useState([]);
 
     const detailsData = {
-        Categories: ['UX', 'Design'],
+        Categories: 'UX Design',
         Title: "Don't Make Me Think, Revisited",
         WrittenBy: 'Steve Krug',
         Publisher: 'New Riders',
         Rating: 4,
-        Reviews: 225
+        Reviews: 225,
+        Tags: ['Design', 'User Experience', 'Survival', 'Biography', 'Trending2020', 'Bestseller']
     };
 
     useEffect(() => {
         setBookDetails(detailsData);
     }, []);
+
+    const arrayRender = (arr) =>
+        arr.map((item) => (
+            <Button variant="contained" color='error' sx={{margin :'2px'}}>
+                {item}
+            </Button>
+        ));
 
     const DetailsTable = () => (
         <TableContainer component={Paper}>
@@ -56,16 +67,18 @@ const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
                 <TableHead>
                     <TableRow>
                         <TableCell sx={{ borderBottom: '3px solid orange' }}>Product Details</TableCell>
-                        <TableCell align="right">Customer Reviews</TableCell>
+                        <TableCell align="center">Customer Reviews</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {Object.keys(bookDetails).map((row , i) => (
+                    {Object.keys(bookDetails).map((row, i) => (
                         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} key={i}>
                             <TableCell component="th" scope="row">
                                 <b>{row}</b>
                             </TableCell>
-                            <TableCell align="right">{bookDetails[row]}</TableCell>
+                            <TableCell align="center">
+                                {Array.isArray(bookDetails[row]) ? arrayRender(bookDetails[row]) : bookDetails[row]}
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
@@ -134,11 +147,11 @@ const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
                                         Year <b>2014</b>
                                     </span>
                                 </Box>
-                                <Stack direction="row" spacing={2} m={2} height='2rem'>
+                                <Stack direction="row" spacing={2} m={2} height="2rem">
                                     <Button variant="outlined" startIcon={<BoltIcon />}>
                                         Free shipping
                                     </Button>
-                                    <Button variant="outlined" color='error' startIcon={<DoneIcon />}>
+                                    <Button variant="outlined" color="error" startIcon={<DoneIcon />}>
                                         In stock
                                     </Button>
                                 </Stack>
@@ -199,6 +212,27 @@ const DetailView = ({ boxShadow = true, shadow = null, ...data }) => {
                 <Grid item xs={4}>
                     <DetailRelatedBooks />
                 </Grid>
+                <Grid item xs={11}>
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <Typography variant="h2" component="h1">
+                            Recommended For You
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <CardTemplate {...Booklist[4]} />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <CardTemplate1 {...Booklist[1]} />
+                        <br />
+                        <CardTemplate1 {...Booklist[6]} />
+                        <br />
+                        <Button sx={{ mt: 2, ml: -8 }} color="secondary" endIcon={<ArrowForwardIcon />} variant="contained">
+                            View All
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
             </Grid>
         </Box>
     );
