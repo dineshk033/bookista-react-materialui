@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CardTemplate6 from '../component/card/cardTemplate6';
 import { BooklistData, Booklist } from 'mock/data';
 import { Box, Stack, Grid, Typography} from '@mui/material';
+import ShoppingSummary from '../component/card/shoppingSummary';
 
 const Cart = () => {
     const [data, setData] = useState([]);
@@ -44,6 +45,12 @@ const Cart = () => {
                 <CardTemplate6 {...item}/>
             ))}
             
+            <Box m={4} textAlign='right' >
+            <Typography gutterBottom variant="h5" component="h5" mr={20}>
+                            Subtotal (5 books) :  2493
+                        </Typography>
+            </Box>
+            <ShoppingSummary/>
         </Box>
     );
 };

@@ -20,16 +20,16 @@ import {
     Grid
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 const CardTemplate6 = ({ title, imageUrl, price, offerPrice, description , writtenBy , publisher}) => (
     <Card 
         sx={{
-            // border: border ? '1px solid' : 'none',
-            // borderColor: theme.palette.primary[200] + 75,
+            borderBottom: '1px solid lightgrey',
             ':hover': {
                 boxShadow: '0 2px 14px 0 rgb(32 40 45 / 8%)'
             },
-            borderRadius: '12px',
             m: 1.5,
             boxShadow: 'none'
         }}
@@ -69,7 +69,7 @@ const CardTemplate6 = ({ title, imageUrl, price, offerPrice, description , writt
                     </Grid>
                     <Grid item xs={2}>
                     <Typography gutterBottom variant="h6" component="p">
-                    <Button variant="outlined" >1</Button>
+                    <Button variant="outlined" startIcon={<RemoveIcon />}  endIcon={<AddIcon/>}>1</Button>
                         </Typography>
                     </Grid>
                     <Grid item xs={2}>
