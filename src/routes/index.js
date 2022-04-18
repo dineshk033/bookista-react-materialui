@@ -5,7 +5,10 @@ import Catalogue from 'pages/catalogue';
 import DashboardComponent from 'pages/dashboard';
 import Homepage from 'pages/homepage';
 import Detail from '../pages/detail';
+<<<<<<< HEAD
 import Cart from '../pages/cart';
+=======
+>>>>>>> 86e106cc98ced3785519cee26c889e6a3be20f02
 import { useRoutes } from 'react-router-dom';
 
 export default function NavigationRoutes() {
